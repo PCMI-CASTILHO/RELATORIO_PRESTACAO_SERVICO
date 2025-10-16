@@ -1,15 +1,30 @@
 // Service Worker para Formulário de Serviço - Selaves
-const CACHE_NAME = 'servico-form-v1.3.0';
+const CACHE_NAME = 'servico-form-v1.3.1'; // *** MUDE O NOME DO CACHE para forçar a atualização! ***
 
 // Recursos essenciais para cache
-const base = self.location.pathname.replace(/sw\.js$/, '');
 const urlsToCache = [
-  base,
-  base + 'index.html',
-  base + 'manifest.json',
+  './',
+  './index.html',
+  './manifest.json',
+  
+  // Ícones do PWA (do manifest.json)
+  './icons/icon-192x192.png',
+  './icons/icon-512x512.png',
+  
+  // Font Awesome - CSS e FONTES
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+  
+  // Adiciona as fontes mais comuns do Font Awesome 6 (você precisa garantir que elas existam no CDN)
+  // O Service Worker pode falhar se tentar cachear algo que não existe, mas estas são as URLs padrão.
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2',
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-regular-400.woff2',
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-brands-400.woff2',
+  
+  // Tailwind CSS (CDN)
   'https://cdn.tailwindcss.com'
 ];
+
+// ... (Resto do código)
 
 // Instalação
 self.addEventListener('install', event => {
