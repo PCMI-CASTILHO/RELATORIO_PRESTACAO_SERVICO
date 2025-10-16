@@ -656,16 +656,16 @@ const estoqueData = [
             populateMaterialsDatalist();
 
             // Registrar Service Worker
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register(`${window.location.pathname.includes('/') ? window.location.pathname.split('/')[1] ? '/' + window.location.pathname.split('/')[1] + '/sw.js' : '/sw.js' : '/sw.js'}`)
-                    .then(registration => {
-                        console.log('Service Worker registrado:', registration);
-                    })
-                    .catch(error => {
-                        console.log('Falha no Service Worker:', error);
-                    });
-            }
-        }
+if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            // Usa o caminho relativo, que assume o escopo correto da raiz
+            navigator.serviceWorker.register('./sw.js').then(function(registration) {
+                console.log('Service Worker registrado com sucesso: ', registration.scope);
+            }, function(err) {
+                console.log('Falha no registro do Service Worker: ', err);
+            });
+        });
+    }
 
         function updateOnlineStatus() {
             if (navigator.onLine) {
