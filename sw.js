@@ -2,10 +2,11 @@
 const CACHE_NAME = 'servico-form-v1.3.0';
 
 // Recursos essenciais para cache
+const base = self.location.pathname.replace(/sw\.js$/, '');
 const urlsToCache = [
-  './',
-  './index.html',
-  './manifest.json',
+  base,
+  base + 'index.html',
+  base + 'manifest.json',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
   'https://cdn.tailwindcss.com'
 ];
