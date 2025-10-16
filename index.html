@@ -657,7 +657,7 @@ const estoqueData = [
 
             // Registrar Service Worker
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('./sw.js')
+                navigator.serviceWorker.register(`${window.location.pathname.includes('/') ? window.location.pathname.split('/')[1] ? '/' + window.location.pathname.split('/')[1] + '/sw.js' : '/sw.js' : '/sw.js'}`)
                     .then(registration => {
                         console.log('Service Worker registrado:', registration);
                     })
